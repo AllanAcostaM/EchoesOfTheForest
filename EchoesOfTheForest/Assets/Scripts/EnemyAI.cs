@@ -7,54 +7,49 @@ public class EnemyAI : MonoBehaviour
 {
     public enum EnemyState
     {
-        Idle,       
-        Patrol,     
-        Chasing,    
-        Searching,   
-        Attacking  // Nuevo estado de ataque
+        Idle,
+        Patrol,
+        Chasing,
+        Searching,
+        Attacking
     }
 
     public EnemyState currentState;
 
-    private Animator animator;        
-    private NavMeshAgent agent;       
+    private Animator animator;
+    private NavMeshAgent agent;
 
-    public Transform[] patrolPoints;  
-    private int currentPatrolIndex;   
-    private Transform lastPatrolPoint;
+    public Transform[] patrolPoints;
+    private int currentPatrolIndex;
 
     public float detectionRadius = 10f;
-    public float fieldOfViewAngle = 120f;  
-    public float attackRange = 1.5f; // Rango de ataque
-    public float searchDuration = 5f;   
-    private float searchTimer;          
+    public float fieldOfViewAngle = 120f;
+    public float attackRange = 1.5f;
+    public float searchDuration = 5f;
+    private float searchTimer;
 
-    public float idleTime = 2f;        
-    private float idleTimer;            
+    public float idleTime = 2f;
+    private float idleTimer;
 
-    private Transform player;           
+    private Transform player;
+    private bool chasingPlayer = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
 
-        if (agent == null)
-        {
-            Debug.LogError("No NavMeshAgent found on " + gameObject.name);
-            enabled = false;
-            return;
-        }
-
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         currentState = EnemyState.Patrol;
-        currentPatrolIndex = -1;
-        GoToNextPatrolPoint();
+        currentPatrolIndex = 0;
+        GoToCurrentPatrolPoint();
     }
 
     void Update()
     {
+        DetectPlayer();
+
         switch (currentState)
         {
             case EnemyState.Idle:
@@ -69,12 +64,10 @@ public class EnemyAI : MonoBehaviour
             case EnemyState.Searching:
                 SearchForPlayer();
                 break;
-            case EnemyState.Attacking:  // Añadir estado de ataque
+            case EnemyState.Attacking:
                 AttackPlayer();
                 break;
         }
-
-        DetectPlayer();
     }
 
     void Idle()
@@ -107,11 +100,10 @@ public class EnemyAI : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // Si el jugador está en el rango de ataque, cambiar al estado Attacking
         if (distanceToPlayer <= attackRange)
         {
             currentState = EnemyState.Attacking;
-            agent.isStopped = true; // Detener el movimiento del enemigo
+            agent.isStopped = true;
         }
         else
         {
@@ -120,7 +112,9 @@ public class EnemyAI : MonoBehaviour
             if (distanceToPlayer > detectionRadius)
             {
                 currentState = EnemyState.Searching;
-                lastPatrolPoint = patrolPoints[currentPatrolIndex];
+                agent.isStopped = true;
+                searchTimer = 0f;
+                chasingPlayer = false;
             }
         }
     }
@@ -129,23 +123,14 @@ public class EnemyAI : MonoBehaviour
     {
         SetAnimatorStates(idle: false, patrol: false, chase: false, search: false);
 
-        // Reproducir la animación de ataque
         animator.SetTrigger("Attack");
 
-        // Comprobar si el ataque conecta
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer <= attackRange)
-        {
-            // Simular Game Over si el ataque conecta
-            Debug.Log("Game Over");
-            Time.timeScale = 0;  // Pausar el juego
-        }
 
-        // Después del ataque, si el jugador escapa, vuelve a perseguir
         if (distanceToPlayer > attackRange)
         {
             currentState = EnemyState.Chasing;
-            agent.isStopped = false;  // Reactivar el movimiento
+            agent.isStopped = false;
         }
     }
 
@@ -153,13 +138,14 @@ public class EnemyAI : MonoBehaviour
     {
         SetAnimatorStates(idle: false, patrol: false, chase: false, search: true);
 
+        agent.isStopped = true;
         searchTimer += Time.deltaTime;
 
         if (searchTimer >= searchDuration)
         {
             searchTimer = 0f;
-            currentState = EnemyState.Patrol;
             GoToClosestPatrolPoint();
+            currentState = EnemyState.Patrol;
         }
     }
 
@@ -172,17 +158,34 @@ public class EnemyAI : MonoBehaviour
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
 
+            // Verificar si el jugador está dentro del ángulo de visión
             if (angleToPlayer <= fieldOfViewAngle / 2)
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(transform.position, directionToPlayer, out hit, detectionRadius))
+                // Emitir un raycast desde la posición del enemigo hacia el jugador
+                if (Physics.Raycast(transform.position + Vector3.up * 1f, directionToPlayer, out hit, detectionRadius))
                 {
+                    // Verificar si el raycast golpea al jugador directamente
                     if (hit.collider.CompareTag("Player"))
                     {
-                        if (currentState != EnemyState.Chasing && currentState != EnemyState.Attacking)
+                        if (currentState != EnemyState.Chasing)
                         {
                             currentState = EnemyState.Chasing;
+                            agent.isStopped = false;
+                            chasingPlayer = true;
+                            SetAnimatorStates(idle: false, patrol: false, chase: true, search: false);
+                        }
+                    }
+                    else
+                    {
+                        // Si el raycast golpea algo que no sea el jugador, perder la visión
+                        if (currentState == EnemyState.Chasing)
+                        {
+                            currentState = EnemyState.Searching;
+                            agent.isStopped = true;
+                            chasingPlayer = false;
+                            SetAnimatorStates(idle: false, patrol: false, chase: false, search: true);
                         }
                     }
                 }
@@ -190,7 +193,11 @@ public class EnemyAI : MonoBehaviour
         }
         else if (currentState == EnemyState.Chasing)
         {
+            // Cambiar a estado de búsqueda si el jugador se pierde
             currentState = EnemyState.Searching;
+            agent.isStopped = true;
+            chasingPlayer = false;
+            SetAnimatorStates(idle: false, patrol: false, chase: false, search: true);
         }
     }
 
@@ -206,33 +213,35 @@ public class EnemyAI : MonoBehaviour
     {
         if (patrolPoints.Length == 0) return;
 
-        do
-        {
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-        } while (patrolPoints[currentPatrolIndex] == lastPatrolPoint);
+        currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+        GoToCurrentPatrolPoint();
+    }
 
-        lastPatrolPoint = patrolPoints[currentPatrolIndex];
+    void GoToCurrentPatrolPoint()
+    {
+        if (patrolPoints.Length == 0) return;
+
         agent.destination = patrolPoints[currentPatrolIndex].position;
+        agent.isStopped = false;
     }
 
     void GoToClosestPatrolPoint()
     {
-        if (patrolPoints.Length == 0) return;
-
-        float minDistance = Mathf.Infinity;
-        int closestIndex = 0;
+        float shortestDistance = Mathf.Infinity;
+        int closestPointIndex = currentPatrolIndex;
 
         for (int i = 0; i < patrolPoints.Length; i++)
         {
             float distance = Vector3.Distance(transform.position, patrolPoints[i].position);
-            if (distance < minDistance)
+
+            if (distance < shortestDistance)
             {
-                minDistance = distance;
-                closestIndex = i;
+                shortestDistance = distance;
+                closestPointIndex = i;
             }
         }
 
-        currentPatrolIndex = closestIndex;
-        agent.destination = patrolPoints[currentPatrolIndex].position;
+        currentPatrolIndex = closestPointIndex;
+        GoToCurrentPatrolPoint();
     }
 }
