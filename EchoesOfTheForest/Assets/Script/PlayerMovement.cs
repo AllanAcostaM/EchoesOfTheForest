@@ -5,42 +5,37 @@ using UnityEngine;
 
 public class PlayerMovement:MonoBehaviour
 {
-    private Rigidbody rb;
-    public float speed = 10;
-    public float moveSpeed = 2.0f;
-    
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-    private void Update()
-    {
-        
-        
-            float moveX = Input.GetAxis("Horizontal"); // Movimiento en X
-            float moveZ = Input.GetAxis("Vertical");   // Movimiento en Z
-            float moveY = 0f;
 
-            Vector3 movement = new Vector3(moveX, moveY, moveZ) * moveSpeed;
-            rb.velocity = movement;
-        
-        
+    public float speed = 5.0f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
-    
+    // Update is called once per frame
+    void Update()
+    {
 
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
