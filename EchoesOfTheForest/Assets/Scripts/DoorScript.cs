@@ -93,15 +93,15 @@ namespace AdvancedHorrorFPS
                     {
                         if(leftDoor)
                         {
-                            animation["Custom_Animation_DoorLeft_Open"].time = 0;
-                            animation["Custom_Animation_DoorLeft_Open"].speed = 1;
-                            animation.Play("Custom_Animation_DoorLeft_Open");
+                            animation["Door_open"].time = 0;
+                            animation["Door_open"].speed = 1;
+                            animation.Play("Door_open");
                         }
                         else
                         {
-                            animation["Custom_Animation_DoorRight_Open"].time = 0;
-                            animation["Custom_Animation_DoorRight_Open"].speed = 1;
-                            animation.Play("Custom_Animation_DoorRight_Open");
+                            animation["Door_open"].time = 0;
+                            animation["Door_open"].speed = 1;
+                            animation.Play("Door_open");
                         }
                         isOpened = true;
                         AudioManager.Instance.Play_Door_Wooden_Open();
@@ -112,15 +112,15 @@ namespace AdvancedHorrorFPS
                         AudioManager.Instance.Play_Door_Close();
                         if (leftDoor)
                         {
-                            animation["Custom_Animation_DoorLeft_Open"].time = animation["Custom_Animation_DoorLeft_Open"].length;
-                            animation["Custom_Animation_DoorLeft_Open"].speed = -1;
-                            animation.Play("Custom_Animation_DoorLeft_Open");
+                            animation["Door_open"].time = animation["Door_open"].length;
+                            animation["Door_open"].speed = -1;
+                            animation.Play("Door_open");
                         }
                         else
                         {
-                            animation["Custom_Animation_DoorRight_Open"].time = animation["Custom_Animation_DoorRight_Open"].length;
-                            animation["Custom_Animation_DoorRight_Open"].speed = -1;
-                            animation.Play("Custom_Animation_DoorRight_Open");
+                            animation["Door_open"].time = animation["Door_open"].length;
+                            animation["Door_open"].speed = -1;
+                            animation.Play("Door_open");
                         }
                     }
                 }
