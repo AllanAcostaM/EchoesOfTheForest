@@ -70,7 +70,7 @@ namespace AdvancedHorrorFPS
 
         public void Click_BacktoMenu()
         {
-            SceneManager.LoadScene("Scene_MainMenu");
+            SceneManager.LoadScene("Menu");
         }
 
         public void Click_Inventory_UseIt()
