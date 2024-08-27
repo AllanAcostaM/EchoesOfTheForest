@@ -420,6 +420,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8375778570081209011}
+    - target: {fileID: 7881658902731007573, guid: 7317835e331884a718d38058e4830c0f,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864131263716061257, guid: 7317835e331884a718d38058e4830c0f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3885192770441530563, guid: 7317835e331884a718d38058e4830c0f, type: 3}
     - {fileID: 3885192768987814906, guid: 7317835e331884a718d38058e4830c0f, type: 3}
