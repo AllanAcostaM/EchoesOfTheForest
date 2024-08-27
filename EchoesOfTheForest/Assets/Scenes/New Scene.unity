@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1813806337039428, guid: efc1d2f7b9392b34381cf6ae5ba1dfde, type: 3}
       propertyPath: m_Name
-      value: Real Car 8 (1)
+      value: MaikiCard
       objectReference: {fileID: 0}
     - target: {fileID: 1936883512995706, guid: efc1d2f7b9392b34381cf6ae5ba1dfde, type: 3}
       propertyPath: m_IsActive
