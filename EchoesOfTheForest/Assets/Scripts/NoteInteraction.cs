@@ -94,7 +94,7 @@ public class NoteInteraction : MonoBehaviour
         }
     }
 
-    void OpenNote()
+    public void OpenNote()
     {
         isNoteOpen = true;
 
@@ -123,7 +123,7 @@ public class NoteInteraction : MonoBehaviour
         interactionText.gameObject.SetActive(false);
     }
 
-    void CloseNote()
+    public void CloseNote()
     {
         isNoteOpen = false;
 

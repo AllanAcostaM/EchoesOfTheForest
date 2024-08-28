@@ -10,6 +10,7 @@ public class NotesInventory : MonoBehaviour
     public List<GameObject> noteCanvases; // Lista de canvases de las notas originales
 
     private bool isInventoryOpen = false;
+    private GameObject currentOpenNote = null; // Referencia a la nota actualmente abierta desde el inventario
 
     void Start()
     {
@@ -22,6 +23,20 @@ public class NotesInventory : MonoBehaviour
         {
             Debug.LogError("El Canvas del inventario no está asignado.");
         }
+
+        // Desactivar la casilla de Interactable por defecto para todos los botones
+        foreach (GameObject slot in noteSlots)
+        {
+            Button button = slot.GetComponent<Button>();
+            if (button != null)
+            {
+                button.interactable = false;
+            }
+            else
+            {
+                Debug.LogError("El objeto " + slot.name + " no tiene un componente Button.");
+            }
+        }
     }
 
     void Update()
@@ -29,15 +44,22 @@ public class NotesInventory : MonoBehaviour
         // Abrir/cerrar el inventario con la tecla TAB
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            Debug.Log("Tecla TAB presionada.");
             ToggleInventory();
+        }
+
+        // Cerrar la nota abierta desde el inventario con las teclas E, Esc o Tab
+        if (currentOpenNote != null)
+        {
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
+            {
+                CloseNoteFromInventory();
+            }
         }
     }
 
     void ToggleInventory()
     {
         isInventoryOpen = !isInventoryOpen;
-        Debug.Log("ToggleInventory llamado. Estado: " + isInventoryOpen);
         if (noteInventoryCanvas != null)
         {
             noteInventoryCanvas.SetActive(isInventoryOpen);
@@ -53,6 +75,12 @@ public class NotesInventory : MonoBehaviour
                 // Ocultar el cursor y bloquearlo cuando se cierra el inventario
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
+
+                // Cerrar la nota si el inventario se cierra
+                if (currentOpenNote != null)
+                {
+                    CloseNoteFromInventory();
+                }
             }
         }
         else
@@ -67,7 +95,7 @@ public class NotesInventory : MonoBehaviour
         if (noteIndex >= 0 && noteIndex < noteSlots.Count)
         {
             Debug.Log("Desbloqueando nota con índice: " + noteIndex);
-            
+
             // Desbloquear el botón correspondiente a la nota
             Transform lockTransform = noteSlots[noteIndex].transform.Find("Lock");
             Transform unlockTransform = noteSlots[noteIndex].transform.Find("Unlock");
@@ -76,6 +104,17 @@ public class NotesInventory : MonoBehaviour
             {
                 lockTransform.gameObject.SetActive(false);
                 unlockTransform.gameObject.SetActive(true);
+
+                // Activar la casilla de Interactable en el botón
+                Button button = noteSlots[noteIndex].GetComponent<Button>();
+                if (button != null)
+                {
+                    button.interactable = true;
+                }
+                else
+                {
+                    Debug.LogError("El objeto " + noteSlots[noteIndex].name + " no tiene un componente Button.");
+                }
             }
             else
             {
@@ -101,10 +140,20 @@ public class NotesInventory : MonoBehaviour
 
             // Activar el canvas de la nota correspondiente
             noteCanvases[noteIndex].SetActive(true);
+            currentOpenNote = noteCanvases[noteIndex];
         }
         else
         {
             Debug.LogWarning("Índice de nota fuera de rango: " + noteIndex);
+        }
+    }
+
+    void CloseNoteFromInventory()
+    {
+        if (currentOpenNote != null)
+        {
+            currentOpenNote.SetActive(false);
+            currentOpenNote = null;
         }
     }
 }

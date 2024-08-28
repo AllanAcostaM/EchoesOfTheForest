@@ -10084,6 +10084,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996691694}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1998360140
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326678481101050231, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702534868499336141, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_Name
+      value: BookHeadMonster_withBlood
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702534868499336141, guid: 2459a6af98a1eae4ebc79b1ffd638762,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2459a6af98a1eae4ebc79b1ffd638762, type: 3}
 --- !u!1 &2000508846
 GameObject:
   m_ObjectHideFlags: 0
@@ -11051,6 +11125,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1842746288755306080, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746288755306080, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11163,6 +11242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NoteSlot_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746288765000854, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1842746288765000854, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
@@ -11306,6 +11390,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1842746289114436907, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746289114436907, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11383,6 +11472,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NoteSlot_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746289403268472, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1842746289403268472, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
@@ -11488,6 +11582,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -592.54834
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746289476476481, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1842746289476476481, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
@@ -11606,6 +11705,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1842746289545144818, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746289545144818, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11716,6 +11820,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1842746290080201122, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746290080201122, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -11823,6 +11932,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NoteSlot_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746290131687146, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1842746290131687146, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
@@ -11966,6 +12080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1842746290313261129, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746290313261129, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -12063,6 +12182,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NoteSlot_9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1842746290532763855, guid: 3003cfd2d617476499f91b081b9060da,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1842746290532763855, guid: 3003cfd2d617476499f91b081b9060da,
         type: 3}
