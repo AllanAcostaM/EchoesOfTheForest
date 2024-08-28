@@ -30,6 +30,7 @@ namespace AdvancedHorrorFPS
         public Image Slider_Stamina;
         public GameObject Panel_Ammo;
         public GameObject Panel_Settings;
+        public GameObject Panel_Controls;
         public GameObject Panel_Note;
         public GameObject Panel_Note_Text;
         public GameObject Button_HideOut;
@@ -70,7 +71,7 @@ namespace AdvancedHorrorFPS
 
         public void Click_BacktoMenu()
         {
-            SceneManager.LoadScene("Scene_MainMenu");
+            SceneManager.LoadScene("MainMenu");
         }
 
         public void Click_Inventory_UseIt()
@@ -224,6 +225,7 @@ namespace AdvancedHorrorFPS
             isPaused = false;
             Panel_Pause.SetActive(false);
             Panel_Settings.SetActive(false);
+            Panel_Controls.SetActive(false);
             Panel_GameUI.SetActive(true);
         }
 
@@ -368,7 +370,7 @@ namespace AdvancedHorrorFPS
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             CameraLook.Instance.enabled = false;
-            if(AdvancedGameManager.Instance.gameType == GameType.DieWhenYourHealthIsRunOut)
+            if (AdvancedGameManager.Instance.gameType == GameType.DieWhenYourHealthIsRunOut)
             {
                 CameraLook.Instance.GetComponent<Animation>().Play();
             }
@@ -382,6 +384,18 @@ namespace AdvancedHorrorFPS
         {
             Panel_Settings.SetActive(true);
             Panel_Pause.SetActive(false);
+        }
+
+        public void Click_Controls()
+        {
+            Panel_Controls.SetActive(true);
+            Panel_Pause.SetActive(false);
+        }
+
+        public void Click_Close_Controls()
+        {
+            Panel_Controls.SetActive(false);
+            Panel_Pause.SetActive(true);
         }
 
         public void Click_Close_Settings()

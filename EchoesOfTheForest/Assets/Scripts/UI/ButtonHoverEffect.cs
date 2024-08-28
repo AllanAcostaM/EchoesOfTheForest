@@ -18,6 +18,14 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
         underlineImage.gameObject.SetActive(false);
     }
 
+    void OnEnable()
+    {
+        // Restaurar el color original del texto
+        buttonText.color = Color.white;
+        // Ocultar la línea
+        underlineImage.gameObject.SetActive(false);
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         // Cambiar el color del texto
