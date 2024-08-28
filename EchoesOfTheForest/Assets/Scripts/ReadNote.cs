@@ -3,45 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NoteInteraction : MonoBehaviour
+public class ReadNote : MonoBehaviour
 {
     public TextMeshProUGUI interactionText;   // Texto del canvas del jugador
     public GameObject noteCanvas;             // Canvas que muestra la nota
     public AudioSource noteSound;             // Sonido al abrir/cerrar la nota
     public string noteContent = "Texto de la nota"; // El contenido de la nota
     public float interactionDistance = 3f;    // Distancia de interacción
-    public int noteIndex;                     // Índice de la nota en el inventario
 
     private Transform player;                 // Referencia al jugador
     private bool isNoteOpen = false;          // Estado de la nota
     private bool isPlayerInRange = false;     // Controla si el jugador está en rango
-    private NotesInventory inventoryManager; // Referencia al inventario
 
     void Start()
     {
         // Buscar al jugador por la etiqueta "Player"
-        player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
-        if (player == null)
-        {
-            Debug.LogError("No se encontró un objeto con la etiqueta 'Player'.");
-            return;
-        }
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 
         // Asegurarse de que el texto de interacción esté desactivado al inicio
         interactionText.gameObject.SetActive(false);
 
         // Asegurarse de que el canvas de la nota esté desactivado al inicio
         noteCanvas.SetActive(false);
-
-        // Buscar el componente del inventario de notas
-        inventoryManager = FindObjectOfType<NotesInventory>();
     }
 
     void Update()
     {
-        if (player == null) return; // Evitar errores si el jugador no se encuentra
-
         // Calcular la distancia entre el jugador y la nota
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
 
@@ -78,7 +65,7 @@ public class NoteInteraction : MonoBehaviour
     private void OnPlayerEnterRange()
     {
         isPlayerInRange = true;
-        // Mostrar el texto de interacción
+        //interactionText.text = "Pulsa E para leer la nota";
         interactionText.gameObject.SetActive(true);
     }
 
@@ -141,17 +128,6 @@ public class NoteInteraction : MonoBehaviour
         if (isPlayerInRange)
         {
             interactionText.gameObject.SetActive(true);
-        }
-
-        // Desactivar el objeto de la nota en lugar de destruirlo
-        gameObject.SetActive(false);
-        // Asegurarse de que el texto de interacción se desactiva al cerrar la nota
-        interactionText.gameObject.SetActive(false);
-
-        // Desbloquear la nota en el inventario
-        if (inventoryManager != null)
-        {
-            inventoryManager.UnlockNoteSlot(noteIndex);
         }
     }
 }
