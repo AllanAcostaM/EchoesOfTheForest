@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< Updated upstream
-  tags:
-  - Wall
-=======
   tags: []
->>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -16,14 +11,14 @@ TagManager:
   - 
   - Water
   - UI
-  - Cluster
-  - IVI
-  - HVAC
-  - Map
-  - ADAS
-  - Invisible
-  - IVI_Car
-  - IVI_Map
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -45,13 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Background
-    uniqueID: 4158710485
-    locked: 0
-  - name: Middle
-    uniqueID: 572934887
-    locked: 0
-  - name: Foreground
-    uniqueID: 2956894377
     locked: 0
