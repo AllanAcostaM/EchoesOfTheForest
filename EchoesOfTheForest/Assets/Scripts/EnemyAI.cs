@@ -24,15 +24,18 @@ public class EnemyAI : MonoBehaviour
 
     public float detectionRadius = 10f;
     public float fieldOfViewAngle = 120f;
-    public float attackRange = 1.5f;
+    public float attackRange = 3f;
     public float searchDuration = 5f;
     private float searchTimer;
 
     public float idleTime = 2f;
     private float idleTimer;
 
+    public float patrolSpeed = 2f;
+    public float chaseSpeed = 5f;
+
     private Transform player;
-    private bool chasingPlayer = false;
+    private bool isPlayerInSight = false;
 
     void Start()
     {
@@ -88,6 +91,8 @@ public class EnemyAI : MonoBehaviour
     {
         SetAnimatorStates(idle: false, patrol: true, chase: false, search: false);
 
+        agent.speed = 0.5f;
+
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
         {
             currentState = EnemyState.Idle;
@@ -96,7 +101,11 @@ public class EnemyAI : MonoBehaviour
 
     void ChasePlayer()
     {
+        // Asegurarse de interrumpir todas las demás animaciones al detectar al jugador
         SetAnimatorStates(idle: false, patrol: false, chase: true, search: false);
+
+        agent.speed = 1f;
+        agent.destination = player.position;
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -105,17 +114,10 @@ public class EnemyAI : MonoBehaviour
             currentState = EnemyState.Attacking;
             agent.isStopped = true;
         }
-        else
+        else if (distanceToPlayer > detectionRadius)
         {
-            agent.destination = player.position;
-
-            if (distanceToPlayer > detectionRadius)
-            {
-                currentState = EnemyState.Searching;
-                agent.isStopped = true;
-                searchTimer = 0f;
-                chasingPlayer = false;
-            }
+            currentState = EnemyState.Searching;
+            searchTimer = 0f;
         }
     }
 
@@ -124,6 +126,8 @@ public class EnemyAI : MonoBehaviour
         SetAnimatorStates(idle: false, patrol: false, chase: false, search: false);
 
         animator.SetTrigger("Attack");
+
+        // Aquí agregarías el código para el Game Over o la lógica correspondiente
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -158,46 +162,32 @@ public class EnemyAI : MonoBehaviour
             Vector3 directionToPlayer = (player.position - transform.position).normalized;
             float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
 
-            // Verificar si el jugador está dentro del ángulo de visión
             if (angleToPlayer <= fieldOfViewAngle / 2)
             {
                 RaycastHit hit;
-
-                // Emitir un raycast desde la posición del enemigo hacia el jugador
                 if (Physics.Raycast(transform.position + Vector3.up * 1f, directionToPlayer, out hit, detectionRadius))
                 {
-                    // Verificar si el raycast golpea al jugador directamente
                     if (hit.collider.CompareTag("Player"))
                     {
-                        if (currentState != EnemyState.Chasing)
-                        {
-                            currentState = EnemyState.Chasing;
-                            agent.isStopped = false;
-                            chasingPlayer = true;
-                            SetAnimatorStates(idle: false, patrol: false, chase: true, search: false);
-                        }
+                        isPlayerInSight = true;
+                        currentState = EnemyState.Chasing;
+                        agent.isStopped = false;
+
+                        // Asegurarse de interrumpir cualquier otra animación
+                        SetAnimatorStates(idle: false, patrol: false, chase: true, search: false);
                     }
                     else
                     {
-                        // Si el raycast golpea algo que no sea el jugador, perder la visión
-                        if (currentState == EnemyState.Chasing)
-                        {
-                            currentState = EnemyState.Searching;
-                            agent.isStopped = true;
-                            chasingPlayer = false;
-                            SetAnimatorStates(idle: false, patrol: false, chase: false, search: true);
-                        }
+                        isPlayerInSight = false;
                     }
                 }
             }
         }
-        else if (currentState == EnemyState.Chasing)
+        else if (isPlayerInSight)
         {
-            // Cambiar a estado de búsqueda si el jugador se pierde
             currentState = EnemyState.Searching;
             agent.isStopped = true;
-            chasingPlayer = false;
-            SetAnimatorStates(idle: false, patrol: false, chase: false, search: true);
+            isPlayerInSight = false;
         }
     }
 
