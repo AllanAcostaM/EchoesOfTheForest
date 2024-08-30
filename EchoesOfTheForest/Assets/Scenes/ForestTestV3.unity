@@ -3939,7 +3939,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+  m_Color: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -14530,6 +14530,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 103.968
       objectReference: {fileID: 0}
+    - target: {fileID: 5054959354370736272, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054959354370736272, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054959354370736272, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5067826899984853588, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14558,6 +14573,21 @@ PrefabInstance:
     - target: {fileID: 5067826899984853588, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6416117637975144211, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6416117637975144211, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6416117637975144211, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
+        type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6875924977577999231, guid: bdf1da542a5cddb4aa90066b16e6dc5c,
