@@ -70,11 +70,11 @@ namespace AdvancedHorrorFPS
 
                 if (AdvancedGameManager.Instance.blueUVLightAttack)
                 {
-                    if (Input.GetMouseButtonDown(1))
+                    if (Input.GetMouseButtonDown(0))
                     {
                         GameCanvas.Instance.FlashLight_BlueEffect_Down();
                     }
-                    else if (Input.GetMouseButtonUp(1))
+                    else if (Input.GetMouseButtonUp(0))
                     {
                         GameCanvas.Instance.FlashLight_BlueEffect_Up();
                     }

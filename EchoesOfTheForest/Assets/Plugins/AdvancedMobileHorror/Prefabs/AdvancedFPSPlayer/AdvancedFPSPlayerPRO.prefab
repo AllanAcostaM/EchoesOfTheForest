@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2503052806494471943}
-  - component: {fileID: 5289297053495506571}
+  - component: {fileID: 1956292020780891527}
   m_Layer: 0
   m_Name: AdvancedFPSPlayerPRO
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5289297053495506571
+--- !u!114 &1956292020780891527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,9 +64,9 @@ MonoBehaviour:
   gameOverEventToInvoke:
     m_PersistentCalls:
       m_Calls: []
-  canPlayerEscapeByClickEnough: 0
+  canPlayerEscapeByClickEnough: 1
   neededClickAmountToEscape: 10
-  durationForClickingTime: 5
+  durationForClickingTime: 3
   SavingAreas: []
   Difficulty: 1
 --- !u!1001 &2982644072952632096
@@ -76,6 +76,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2503052806494471943}
     m_Modifications:
+    - target: {fileID: 397230604002530990, guid: 4a2952dadff390748be38ae50e0b65bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2237151668180445304, guid: 4a2952dadff390748be38ae50e0b65bb,
         type: 3}
       propertyPath: m_Name

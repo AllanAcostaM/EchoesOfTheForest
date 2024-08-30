@@ -219,8 +219,11 @@ GameObject:
   - component: {fileID: 421166}
   - component: {fileID: 11175258}
   - component: {fileID: 6587312}
-  - component: {fileID: 11414708}
-  - component: {fileID: 11425056}
+  - component: {fileID: 725703166817596274}
+  - component: {fileID: 8168697908707064030}
+  - component: {fileID: 9098678625921035993}
+  - component: {fileID: 5073798607469077480}
+  - component: {fileID: 6522258352178666053}
   m_Layer: 0
   m_Name: Door13
   m_TagString: Untagged
@@ -273,46 +276,25 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.45, y: 2.1, z: 3.8}
-  m_Center: {x: 0, y: 1.05, z: 0}
---- !u!114 &11414708
-MonoBehaviour:
+  m_Size: {x: 1.45, y: 2.1, z: 0.9440479}
+  m_Center: {x: 0, y: 1.05, z: -0.027600288}
+--- !u!208 &725703166817596274
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137926}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe11109085664e4187ca9eff683a89f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Width: 0.95
-  Height: 2.1
-  Depth: 0.25
-  KnobXPosition: 0.09
-  KnobYPosition: 1.091
-  OpenDistance: 4
-  Controllers:
-    Width_L: {fileID: 402382}
-    Width_R: {fileID: 454190}
-    Knob01Placement: {fileID: 410378}
-    Knob02Placement: {fileID: 0}
-    Lock01: {fileID: 497806}
-    Lock02: {fileID: 458860}
-    Depth01: {fileID: 437734}
-    Depth02: {fileID: 483578}
-    Depth03: {fileID: 480192}
-    Depth04: {fileID: 497110}
-    Door_top01: {fileID: 461014}
-    Door_top02: {fileID: 472106}
-    Door_top03: {fileID: 0}
-    Door_top04: {fileID: 0}
-    Frame_top01: {fileID: 412990}
-    Frame_top02: {fileID: 436292}
-    Coll: {fileID: 465010}
-    Coll02: {fileID: 0}
---- !u!114 &11425056
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &8168697908707064030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,7 +303,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 137926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f5219d242945b640aeed524ba22a17a, type: 3}
+  m_Script: {fileID: 11500000, guid: 194e84318b2ad2241b71dba0c718fe3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 1
+  giveLockMessage: 1
+  isOpened: 0
+  KeyID_ToOpen: 1
+  AngleForOpening: 60
+  leftDoor: 0
+--- !u!114 &9098678625921035993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57005477f2cb7c47bfde850e8b11243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerHeadTag: MainCamera
@@ -329,7 +329,7 @@ MonoBehaviour:
   controls:
     openingSpeed: 1
     closingSpeed: 1.3
-    closeStartFrom: 0.35
+    closeStartFrom: 0.6
     openMethod: 0
     openButton: 101
     autoClose: 0
@@ -338,21 +338,53 @@ MonoBehaviour:
     LockedAnim: Door_locked
   doorSounds:
     enabled: 1
-    open: {fileID: 8300000, guid: af0158a12001c1647b4fe18999e7fc66, type: 3}
-    close: {fileID: 8300000, guid: f1162bae392433f4eadf47a28c750bdb, type: 3}
-    closed: {fileID: 8300000, guid: 096fe764cf8133d49be8f42c058524d1, type: 3}
+    open: {fileID: 0}
+    close: {fileID: 0}
+    closed: {fileID: 0}
     volume: 1
     pitchRandom: 0.2
   doorTexts:
-    enabled: 1
+    enabled: 0
     openingText: Press [BUTTON] to open
     closingText: Press [BUTTON] to close
     lockText: You need a key!
-    TextPrefab: {fileID: 115870, guid: f349eb179f1063642b5c4cd916645e4f, type: 3}
+    TextPrefab: {fileID: 0}
   keySystem:
     enabled: 0
     isUnlock: 0
     LockPrefab: {fileID: 0}
+--- !u!114 &5073798607469077480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df050c2274bf4d1469480b6e8655168a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: 0
+  Name: Door House
+  playerInRange: 0
+  interactionType: 0
+  eventToInvokeWhenInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  imageToFill: {fileID: 0}
+--- !u!114 &6522258352178666053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c827e74dcf144869bba86e3bc82bf86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &143130
 GameObject:
   m_ObjectHideFlags: 0
