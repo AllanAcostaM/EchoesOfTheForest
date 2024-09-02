@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: ff85933a2df2c8541a2740f227daebb9
+timeCreated: 1550658917
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Back Wheel
+    100002: BL
+    100004: Bonnet
+    100006: BR
+    100008: Chassis
+    100010: Door Left
+    100012: Door Right
+    100014: FL
+    100016: FR
+    100018: Glass Back
+    100020: Glass Front
+    100022: Glass Left
+    100024: Glass Right
+    100026: Glasses
+    100028: Guard Back
+    100030: Guard Front
+    100032: Guard Upper
+    100034: Guards
+    100036: Left Door Glass
+    100038: LOD1
+    100040: LOD1 1
+    100042: LOD1 10
+    100044: LOD1 11
+    100046: LOD1 12
+    100048: LOD1 2
+    100050: LOD1 3
+    100052: LOD1 4
+    100054: LOD1 5
+    100056: LOD1 6
+    100058: LOD1 7
+    100060: LOD1 8
+    100062: LOD1 9
+    100064: LOD2
+    100066: LOD2 1
+    100068: LOD2 10
+    100070: LOD2 11
+    100072: LOD2 12
+    100074: LOD2 2
+    100076: LOD2 3
+    100078: LOD2 4
+    100080: LOD2 5
+    100082: LOD2 6
+    100084: LOD2 7
+    100086: LOD2 8
+    100088: LOD2 9
+    100090: Pointers
+    100092: //RootNode
+    100094: Right Door Glass
+    100096: RPM Pointer
+    100098: Speed Pointer
+    100100: Steering
+    100102: Transmission
+    100104: Wheels
+    400000: Back Wheel
+    400002: BL
+    400004: Bonnet
+    400006: BR
+    400008: Chassis
+    400010: Door Left
+    400012: Door Right
+    400014: FL
+    400016: FR
+    400018: Glass Back
+    400020: Glass Front
+    400022: Glass Left
+    400024: Glass Right
+    400026: Glasses
+    400028: Guard Back
+    400030: Guard Front
+    400032: Guard Upper
+    400034: Guards
+    400036: Left Door Glass
+    400038: LOD1
+    400040: LOD1 1
+    400042: LOD1 10
+    400044: LOD1 11
+    400046: LOD1 12
+    400048: LOD1 2
+    400050: LOD1 3
+    400052: LOD1 4
+    400054: LOD1 5
+    400056: LOD1 6
+    400058: LOD1 7
+    400060: LOD1 8
+    400062: LOD1 9
+    400064: LOD2
+    400066: LOD2 1
+    400068: LOD2 10
+    400070: LOD2 11
+    400072: LOD2 12
+    400074: LOD2 2
+    400076: LOD2 3
+    400078: LOD2 4
+    400080: LOD2 5
+    400082: LOD2 6
+    400084: LOD2 7
+    400086: LOD2 8
+    400088: LOD2 9
+    400090: Pointers
+    400092: //RootNode
+    400094: Right Door Glass
+    400096: RPM Pointer
+    400098: Speed Pointer
+    400100: Steering
+    400102: Transmission
+    400104: Wheels
+    2300000: Back Wheel
+    2300002: BL
+    2300004: Bonnet
+    2300006: BR
+    2300008: Chassis
+    2300010: Door Left
+    2300012: Door Right
+    2300014: FL
+    2300016: FR
+    2300018: Glass Back
+    2300020: Glass Front
+    2300022: Glass Left
+    2300024: Glass Right
+    2300026: Guard Back
+    2300028: Guard Front
+    2300030: Guard Upper
+    2300032: Left Door Glass
+    2300034: LOD1
+    2300036: LOD1 1
+    2300038: LOD1 10
+    2300040: LOD1 11
+    2300042: LOD1 12
+    2300044: LOD1 2
+    2300046: LOD1 3
+    2300048: LOD1 4
+    2300050: LOD1 5
+    2300052: LOD1 6
+    2300054: LOD1 7
+    2300056: LOD1 8
+    2300058: LOD1 9
+    2300060: LOD2
+    2300062: LOD2 1
+    2300064: LOD2 10
+    2300066: LOD2 11
+    2300068: LOD2 12
+    2300070: LOD2 2
+    2300072: LOD2 3
+    2300074: LOD2 4
+    2300076: LOD2 5
+    2300078: LOD2 6
+    2300080: LOD2 7
+    2300082: LOD2 8
+    2300084: LOD2 9
+    2300086: Right Door Glass
+    2300088: RPM Pointer
+    2300090: Speed Pointer
+    2300092: Steering
+    2300094: Transmission
+    3300000: Back Wheel
+    3300002: BL
+    3300004: Bonnet
+    3300006: BR
+    3300008: Chassis
+    3300010: Door Left
+    3300012: Door Right
+    3300014: FL
+    3300016: FR
+    3300018: Glass Back
+    3300020: Glass Front
+    3300022: Glass Left
+    3300024: Glass Right
+    3300026: Guard Back
+    3300028: Guard Front
+    3300030: Guard Upper
+    3300032: Left Door Glass
+    3300034: LOD1
+    3300036: LOD1 1
+    3300038: LOD1 10
+    3300040: LOD1 11
+    3300042: LOD1 12
+    3300044: LOD1 2
+    3300046: LOD1 3
+    3300048: LOD1 4
+    3300050: LOD1 5
+    3300052: LOD1 6
+    3300054: LOD1 7
+    3300056: LOD1 8
+    3300058: LOD1 9
+    3300060: LOD2
+    3300062: LOD2 1
+    3300064: LOD2 10
+    3300066: LOD2 11
+    3300068: LOD2 12
+    3300070: LOD2 2
+    3300072: LOD2 3
+    3300074: LOD2 4
+    3300076: LOD2 5
+    3300078: LOD2 6
+    3300080: LOD2 7
+    3300082: LOD2 8
+    3300084: LOD2 9
+    3300086: Right Door Glass
+    3300088: RPM Pointer
+    3300090: Speed Pointer
+    3300092: Steering
+    3300094: Transmission
+    4300000: Chassis
+    4300002: LOD1
+    4300004: LOD2
+    4300006: Bonnet
+    4300008: LOD1
+    4300010: LOD2
+    4300012: Door Right
+    4300014: LOD1
+    4300016: LOD2
+    4300018: Right Door Glass
+    4300020: Door Left
+    4300022: LOD1
+    4300024: LOD2
+    4300026: Left Door Glass
+    4300028: Transmission
+    4300030: Steering
+    4300032: LOD1
+    4300034: LOD2
+    4300036: Back Wheel
+    4300038: LOD1
+    4300040: LOD2
+    4300042: Guard Front
+    4300044: LOD1
+    4300046: LOD2
+    4300048: Guard Back
+    4300050: LOD1
+    4300052: LOD2
+    4300054: Guard Upper
+    4300056: LOD1
+    4300058: LOD2
+    4300060: RPM Pointer
+    4300062: Speed Pointer
+    4300064: Glass Back
+    4300066: Glass Left
+    4300068: Glass Right
+    4300070: Glass Front
+    4300072: FL
+    4300074: LOD1
+    4300076: LOD2
+    4300078: BL
+    4300080: LOD1
+    4300082: LOD2
+    4300084: FR
+    4300086: LOD1
+    4300088: LOD2
+    4300090: BR
+    4300092: LOD1
+    4300094: LOD2
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
