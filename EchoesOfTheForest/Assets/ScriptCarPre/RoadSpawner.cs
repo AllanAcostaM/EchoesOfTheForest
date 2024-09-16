@@ -22,7 +22,6 @@ public class RoadSpawner : MonoBehaviour
         float newZ = roads[roads.Count - 1].transform.position.z + offset;
         movedRoad.transform.position = new Vector3(0, 0, newZ);
         roads.Add(movedRoad);
-        Debug.Log($"Moved road to new Z position: {newZ}");
     }
 
 
