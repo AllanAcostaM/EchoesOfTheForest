@@ -89,6 +89,9 @@ namespace AdvancedHorrorFPS
             // if (PistolScript.Instance.enabled && PistolScript.Instance.isFiring) return;
             // if (BaseballScript.Instance.enabled && BaseballScript.Instance.isHitting) return;
 
+            // Impedir abrir inventario si el juego está pausado
+            if (isPaused) return;
+
             if (Panel_Inventory.activeSelf)
             {
                 Panel_Inventory.SetActive(false);
@@ -296,9 +299,13 @@ namespace AdvancedHorrorFPS
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Tab) && !isGameOver)
+                // Impedir abrir inventario si el juego está pausado
+                 {   if (!isPaused)
+                
                 {
-                    Click_Inventory();
+                     Click_Inventory();
                 }
+              }
             }
             // if (AdvancedGameManager.Instance.controllerType == ControllerType.Mobile)
             {

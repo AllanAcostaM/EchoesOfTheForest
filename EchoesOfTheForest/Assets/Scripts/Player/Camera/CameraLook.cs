@@ -51,8 +51,8 @@ namespace AdvancedHorrorFPS
                 return;
 
             // Entrada del ratón (PC)
-            h += Input.GetAxis("Mouse X") * horizontalRotationSpeed * PlayerPrefs.GetFloat("MouseSensivity", 1);
-            v -= Input.GetAxis("Mouse Y") * verticalRotationSpeed * PlayerPrefs.GetFloat("MouseSensivity", 1);
+            h += Input.GetAxis("Mouse X") * horizontalRotationSpeed * PlayerPrefs.GetFloat("MouseSensivity", 1f);
+            v -= Input.GetAxis("Mouse Y") * verticalRotationSpeed * PlayerPrefs.GetFloat("MouseSensivity", 1f);
 
             h = ClampAngle(h, -360.0f, 360.0f);
             v = ClampAngle(v, minVerticalAngle, maxVerticalAngle);
