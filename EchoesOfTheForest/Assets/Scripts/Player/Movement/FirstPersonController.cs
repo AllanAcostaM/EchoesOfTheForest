@@ -15,8 +15,8 @@ namespace AdvancedHorrorFPS
 		public float JumpTimeout = 0.1f;
 		public float FallTimeout = 0.15f;
 		public bool Grounded = true;
-		public float GroundedOffset = -0.14f;
-		public float GroundedRadius = 0.5f;
+		public float GroundedOffset = -0.2f;
+		public float GroundedRadius = 0.3f;
 		public LayerMask GroundLayers;
 		public float TopClamp = 90.0f;
 		public float BottomClamp = -90.0f;
@@ -29,7 +29,7 @@ namespace AdvancedHorrorFPS
 		public Animation animation;
 		public Animation FPSHandParent;
 		private bool isCrouching = false;
-
+		private AudioSource walkAudioSource;
 		private float originalHeight;
 		private bool increasingHeight = true;
 		private float heightChangeSpeed = 6f;
@@ -39,6 +39,7 @@ namespace AdvancedHorrorFPS
 		{
 			_controller = GetComponent<CharacterController>();
 			originalHeight = _controller.height;
+			walkAudioSource = AudioManager.Instance.audioSourceWalk;
 		}
 
 		private void Update()
@@ -126,23 +127,31 @@ namespace AdvancedHorrorFPS
 		private void Move()
 		{
 			float targetSpeed = MoveSpeed;
+		// Lógica de esprint
 			if (AdvancedGameManager.Instance.canSprint)
 			{
 				if (AdvancedGameManager.Instance.controllerType == ControllerType.PcAndConsole)
 				{
-					if (Input.GetKey(KeyCode.LeftShift))
+					if (Input.GetKey(KeyCode.LeftShift) && Stamina > 0)
 					{
 						isSprinting = true;
 					}
-					else if (Input.GetKeyUp(KeyCode.LeftShift))
+					else if (Input.GetKeyUp(KeyCode.LeftShift) || Stamina <= 0)
 					{
 						isSprinting = false;
 					}
 				}
+
 				if (isSprinting && Stamina > 0)
 				{
 					targetSpeed = SprintSpeed;
 					Stamina = Stamina - Time.deltaTime * 25;
+
+					// Reproduce el sonido de sprint mientras el jugador esté corriendo
+					if (!walkAudioSource.isPlaying)
+					{
+						AudioManager.Instance.Play_Player_Sprint(); // Llamada al método de sprint
+					}
 				}
 				else if (!isSprinting && Stamina < 100)
 				{
@@ -160,6 +169,19 @@ namespace AdvancedHorrorFPS
 			if (isCrouching)
 			{
 				targetSpeed = (MoveSpeed / 1.5f);
+				// Reducir el volumen del sonido de caminar cuando el jugador está agachado
+				if (walkAudioSource != null)
+				{
+					walkAudioSource.volume = 0.3f; // Ajusta el volumen más bajo al agacharse
+				}
+			}
+			else
+			{
+				// Restaurar el volumen normal cuando el jugador no está agachado
+				if (walkAudioSource != null)
+				{
+					walkAudioSource.volume = 1.0f; // Volumen normal al caminar
+				}
 			}
 
 			// Aquí eliminamos la lógica del controlador móvil
@@ -180,10 +202,20 @@ namespace AdvancedHorrorFPS
 			}
 
 			Vector3 inputDirection = new Vector3(_input.x, 0.0f, _input.y).normalized;
+
 			if (_input != Vector2.zero)
 			{
 				inputDirection = transform.right * _input.x + transform.forward * _input.y;
-				AudioManager.Instance.Play_Player_Walk();
+
+				// Ajusta el pitch del audio para mantenerlo consistente
+				walkAudioSource.pitch = 1f;
+
+				// Reproduce el sonido de los pasos solo si el jugador está moviéndose
+				if (_speed > 0.1f && !walkAudioSource.isPlaying)
+				{
+					AudioManager.Instance.Play_Player_Walk(); // Reproduce pasos aleatorios solo cuando el jugador está en movimiento
+				}
+				
 				if (!FPSHandParent.isPlaying) FPSHandParent.Play("WalkingHandAnimation");
 
 				if (increasingHeight)

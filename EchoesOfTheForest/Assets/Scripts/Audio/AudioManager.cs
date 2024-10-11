@@ -30,8 +30,8 @@ namespace AdvancedHorrorFPS
         // public AudioClip Audio_PistolFire;
         public AudioClip Audio_Healing;
         // public AudioClip Audio_PistolEmpty;
-        public AudioClip Audio_StaminaBreathing;
-
+        public AudioClip Audio_StaminaBreathing; // Asegúrate de tener esta línea para el AudioClip de respiración pesada
+        public AudioSource audioSourceBreathing;  // Nuevo AudioSource para la respiración
 
         [Header("Inventory Sound Effects")]
         public AudioClip Audio_GoLeftRightButton;
@@ -40,6 +40,10 @@ namespace AdvancedHorrorFPS
         [Header("Press and Hold Sound Effects")]
         public AudioClip Audio_PressAndHoldMaintainDone;
 
+        [Header("Footstep Sounds")]
+        public AudioClip[] PlayerFootstepSounds; // Añadir aquí tus 5 clips de pasos
+        public AudioClip[] PlayerSprintSounds; // Añade un array para los clips de sprint
+
         private void Awake()
         {
             Instance = this;
@@ -47,12 +51,17 @@ namespace AdvancedHorrorFPS
 
         public void Play_Audio_StaminaBreathing()
         {
-            audioSource.PlayOneShot(Audio_StaminaBreathing);
+            if (!audioSourceBreathing.isPlaying)  // Verifica si ya se está reproduciendo la respiración
+            {
+            audioSourceBreathing.PlayOneShot(Audio_StaminaBreathing);  
+            }
         }
 
         void Start()
         {
-            audioSource = GetComponent<AudioSource>();
+            audioSource = GetComponent<AudioSource>();     
+            audioSourceBreathing = gameObject.AddComponent<AudioSource>(); // Añade un nuevo AudioSource para la respiración
+
         }
 
         public void Play_Audio_GoLeftRightButton()
@@ -74,6 +83,7 @@ namespace AdvancedHorrorFPS
         {
             audioSource.PlayOneShot(Audio_Jump);
         }
+        
 
         // public void Play_Audio_Reload()
         // {
@@ -189,16 +199,40 @@ namespace AdvancedHorrorFPS
         }
 
 
+        // Modificación en Play_Player_Walk
         public void Play_Player_Walk()
         {
             if (Time.time > LastTimeWalkSound + WalkSoundPeriod)
             {
                 audioSourceWalk.pitch = UnityEngine.Random.Range(1, 1.5f);
-                audioSourceWalk.Play();
+
+                // Reproducir un clip aleatorio de los pasos
+                int randomIndex = UnityEngine.Random.Range(0, PlayerFootstepSounds.Length);
+                audioSourceWalk.PlayOneShot(PlayerFootstepSounds[randomIndex]);
+
                 LastTimeWalkSound = Time.time;
-                WalkSoundPeriod = UnityEngine.Random.Range(0.4f, 0.75f);
+                WalkSoundPeriod = UnityEngine.Random.Range(0.4f, 0.75f); // Ajusta los valores según el ritmo del paso
             }
         }
+
+        // Método para reproducir sonidos de sprint
+        public void Play_Player_Sprint()
+        {
+            if (Time.time > LastTimeSprintSound + SprintSoundPeriod)
+            {
+                audioSourceWalk.pitch = UnityEngine.Random.Range(1.2f, 1.6f); // Ajusta el pitch para sprint
+
+                // Reproducir un clip aleatorio de los sonidos de sprint
+                int randomIndex = UnityEngine.Random.Range(0, PlayerSprintSounds.Length);
+                audioSourceWalk.PlayOneShot(PlayerSprintSounds[randomIndex]);
+
+                LastTimeSprintSound = Time.time;
+                SprintSoundPeriod = UnityEngine.Random.Range(0.3f, 0.6f); // Ritmo más rápido que el de caminar
+            }
+        }
+
+        private float LastTimeSprintSound = 0;
+        private float SprintSoundPeriod = 0.4f;
 
         private float LastTimeWalkSound = 0;
         private float WalkSoundPeriod = 0.5f;
