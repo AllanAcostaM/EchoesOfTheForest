@@ -88,8 +88,18 @@ MonoBehaviour:
   Audio_GoLeftRightButton: {fileID: 8300000, guid: 3b5ca5f612ff346f0b33b821cd5ddabb, type: 3}
   Audio_Inventory_Select: {fileID: 8300000, guid: 2a3a37fc7f5724bf8a68eb13c270dc99, type: 3}
   Audio_PressAndHoldMaintainDone: {fileID: 8300000, guid: 0b791e5757535456782e1f1023fe5f20, type: 3}
-  PlayerFootstepSounds: []
-  PlayerSprintSounds: []
+  PlayerFootstepSounds:
+  - {fileID: 8300000, guid: 85cd443a094723f4e9e5f7f944a99ec3, type: 3}
+  - {fileID: 8300000, guid: 25ce2d23d19eab24e9d0a740218b1118, type: 3}
+  - {fileID: 8300000, guid: 86a6e16e624aa484099bdd15417cd380, type: 3}
+  - {fileID: 8300000, guid: 8856c2b48284b314ba27d0012c989d2b, type: 3}
+  - {fileID: 8300000, guid: 72098b773acdc12478cc10875be2f5df, type: 3}
+  PlayerSprintSounds:
+  - {fileID: 8300000, guid: 964259ba00349da40b160ea458b30e9b, type: 3}
+  - {fileID: 8300000, guid: 113f68defe9da6648a9d0ee07d61a788, type: 3}
+  - {fileID: 8300000, guid: 9e1d3e4c3354f2741bc0cd15b1269a53, type: 3}
+  - {fileID: 8300000, guid: d13333f45cc2fd642a3f404718884c41, type: 3}
+  - {fileID: 8300000, guid: 9870c093cf22f28468da493596d1c9bd, type: 3}
 --- !u!82 &8852804585379835760
 AudioSource:
   m_ObjectHideFlags: 0
@@ -100,7 +110,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 650d70c6e9d47a94ca3be07d180ecf90, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
