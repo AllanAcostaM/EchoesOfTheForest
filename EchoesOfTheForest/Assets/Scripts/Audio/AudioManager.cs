@@ -43,6 +43,10 @@ namespace AdvancedHorrorFPS
         [Header("Footstep Sounds")]
         public AudioClip[] PlayerFootstepSounds; // Añadir aquí tus 5 clips de pasos
         public AudioClip[] PlayerSprintSounds; // Añade un array para los clips de sprint
+        
+        [Header("Footstep Sounds for Wood Surface")]
+        public AudioClip[] WoodFootstepSounds; // Clips para pasos sobre madera
+        public AudioClip[] WoodSprintSounds;   // Clips para sprint sobre madera
 
         private void Awake()
         {
@@ -200,36 +204,58 @@ namespace AdvancedHorrorFPS
 
 
         // Modificación en Play_Player_Walk
-        public void Play_Player_Walk()
+    public void Play_Player_Walk(string surfaceTag)
+    {
+        if (Time.time > LastTimeWalkSound + WalkSoundPeriod)
         {
-            if (Time.time > LastTimeWalkSound + WalkSoundPeriod)
+            audioSourceWalk.pitch = UnityEngine.Random.Range(1, 1.5f);
+
+            AudioClip[] selectedFootstepSounds;
+
+            // Cambia los sonidos de pasos según el tag de la superficie
+            if (surfaceTag == "WoodFloor")
             {
-                audioSourceWalk.pitch = UnityEngine.Random.Range(1, 1.5f);
-
-                // Reproducir un clip aleatorio de los pasos
-                int randomIndex = UnityEngine.Random.Range(0, PlayerFootstepSounds.Length);
-                audioSourceWalk.PlayOneShot(PlayerFootstepSounds[randomIndex]);
-
-                LastTimeWalkSound = Time.time;
-                WalkSoundPeriod = UnityEngine.Random.Range(0.4f, 0.75f); // Ajusta los valores según el ritmo del paso
+                selectedFootstepSounds = WoodFootstepSounds; // Pasos sobre madera
             }
+            else
+            {
+                selectedFootstepSounds = PlayerFootstepSounds; // Pasos por defecto (hojas)
+            }
+
+            int randomIndex = UnityEngine.Random.Range(0, selectedFootstepSounds.Length);
+            audioSourceWalk.PlayOneShot(selectedFootstepSounds[randomIndex]);
+
+            LastTimeWalkSound = Time.time;
+            WalkSoundPeriod = UnityEngine.Random.Range(0.4f, 0.75f); // Ajusta según el ritmo del paso
         }
+    }
 
         // Método para reproducir sonidos de sprint
-        public void Play_Player_Sprint()
+    public void Play_Player_Sprint(string surfaceTag)
+    {
+        if (Time.time > LastTimeSprintSound + SprintSoundPeriod)
         {
-            if (Time.time > LastTimeSprintSound + SprintSoundPeriod)
+            audioSourceWalk.pitch = UnityEngine.Random.Range(1.2f, 1.6f);
+
+            AudioClip[] selectedSprintSounds;
+
+            // Cambia los sonidos de sprint según el tag de la superficie
+            if (surfaceTag == "WoodFloor")
             {
-                audioSourceWalk.pitch = UnityEngine.Random.Range(1.2f, 1.6f); // Ajusta el pitch para sprint
-
-                // Reproducir un clip aleatorio de los sonidos de sprint
-                int randomIndex = UnityEngine.Random.Range(0, PlayerSprintSounds.Length);
-                audioSourceWalk.PlayOneShot(PlayerSprintSounds[randomIndex]);
-
-                LastTimeSprintSound = Time.time;
-                SprintSoundPeriod = UnityEngine.Random.Range(0.3f, 0.6f); // Ritmo más rápido que el de caminar
+                selectedSprintSounds = WoodSprintSounds; // Sprint sobre madera
             }
+            else
+            {
+                selectedSprintSounds = PlayerSprintSounds; // Sprint por defecto (hojas)
+            }
+
+            int randomIndex = UnityEngine.Random.Range(0, selectedSprintSounds.Length);
+            audioSourceWalk.PlayOneShot(selectedSprintSounds[randomIndex]);
+
+            LastTimeSprintSound = Time.time;
+            SprintSoundPeriod = UnityEngine.Random.Range(0.3f, 0.6f);
         }
+    }
 
         private float LastTimeSprintSound = 0;
         private float SprintSoundPeriod = 0.4f;

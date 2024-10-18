@@ -127,6 +127,19 @@ namespace AdvancedHorrorFPS
 		private void Move()
 		{
 			float targetSpeed = MoveSpeed;
+
+			// Lógica de Raycast para detectar la superficie
+			RaycastHit hit;
+			string surfaceTag = "ForestFloor"; // Valor por defecto
+
+			if (Physics.Raycast(transform.position, Vector3.down, out hit, 1.0f))
+			{
+				// Si el Raycast detecta una superficie con el tag "WoodFloor", lo asigna
+				if (hit.collider.CompareTag("WoodFloor"))
+				{
+					surfaceTag = "WoodFloor";
+				}
+			}
 		// Lógica de esprint
 			if (AdvancedGameManager.Instance.canSprint)
 			{
@@ -150,7 +163,7 @@ namespace AdvancedHorrorFPS
 					// Reproduce el sonido de sprint mientras el jugador esté corriendo
 					if (!walkAudioSource.isPlaying)
 					{
-						AudioManager.Instance.Play_Player_Sprint(); // Llamada al método de sprint
+						AudioManager.Instance.Play_Player_Sprint(surfaceTag); // Llamada al método de sprint
 					}
 				}
 				else if (!isSprinting && Stamina < 100)
@@ -213,7 +226,7 @@ namespace AdvancedHorrorFPS
 				// Reproduce el sonido de los pasos solo si el jugador está moviéndose
 				if (_speed > 0.1f && !walkAudioSource.isPlaying)
 				{
-					AudioManager.Instance.Play_Player_Walk(); // Reproduce pasos aleatorios solo cuando el jugador está en movimiento
+					AudioManager.Instance.Play_Player_Walk(surfaceTag); // Reproduce pasos aleatorios solo cuando el jugador está en movimiento
 				}
 				
 				if (!FPSHandParent.isPlaying) FPSHandParent.Play("WalkingHandAnimation");
