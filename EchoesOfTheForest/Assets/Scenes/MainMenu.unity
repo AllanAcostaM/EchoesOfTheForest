@@ -693,7 +693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 155}
+  m_AnchoredPosition: {x: 0, y: 197}
   m_SizeDelta: {x: 550, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &44667484
@@ -1097,7 +1097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -71}
+  m_AnchoredPosition: {x: -0.50001, y: -80}
   m_SizeDelta: {x: 580, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &84457994
@@ -5457,7 +5457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 256}
+  m_AnchoredPosition: {x: 0, y: 215.54999}
   m_SizeDelta: {x: 581, y: 72.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &868233634
@@ -11941,7 +11941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e729f070936c547e297e56b48af146b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName_GamePlay: ForestTestV4
+  SceneName_GamePlay: New Scene
   Panel_MainMenu: {fileID: 1128297316}
   Panel_Settings: {fileID: 1392241022}
   image_Progress: {fileID: 755587448}
