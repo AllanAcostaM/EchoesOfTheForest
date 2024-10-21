@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 6c9825cab8650c245bd99436e66b58ac
-  m_OcclusionCullingData: {fileID: 36300000, guid: 2d2700ff96e491b4eba4203be6cd5843, type: 2}
+  m_SceneGUID: 0fe473a90f5213744b894df90e4fe77a
+  m_OcclusionCullingData: {fileID: 36300000, guid: 702df3e292d617d42b2386b9cc06ade3, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -17022,7 +17022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1176625965506842302, guid: 9255b586b76af92409e5d44da4265c19, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -8.400818
+      value: -8.400757
       objectReference: {fileID: 0}
     - target: {fileID: 1727989940491896700, guid: 9255b586b76af92409e5d44da4265c19, type: 3}
       propertyPath: WoodSprintSounds.Array.size
