@@ -27,7 +27,7 @@ public class PopupManager : MonoBehaviour
         popupAnimation.Play(animationName);
 
         // Programamos que se oculte después de 7 segundos
-        Invoke("HidePopup", 9f);
+        Invoke("HidePopup", 7f);
     }
 
         void HidePopup()
